@@ -37,3 +37,6 @@ plugin :tmp_restart
 shared_dir = "/puma_shared"
 # Set up socket location
 bind "unix://#{shared_dir}/sockets/puma.sock"
+
+# daemonize
+daemonize true
