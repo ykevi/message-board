@@ -1,9 +1,9 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:edit, :update]
+  before_action :set_message, only: [:edit, :update, :destroy]
 
   def index
     @message = Message.new
-    @messages = Message.all
+    @messages = Message.all.order(:id)
   end
 
   def create
@@ -27,6 +27,11 @@ class MessagesController < ApplicationController
       flash.now[:alert] = "メッセージの保存に失敗しました。"
       render 'edit'
     end
+  end
+
+  def destroy
+    @message.destroy
+    redirect_to root_path, notice: 'メッセージを削除しました'
   end
 
   private

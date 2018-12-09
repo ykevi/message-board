@@ -8,7 +8,13 @@
       <div style="margin-top: 0.25%">
         <span class="label label-info"><%= message.name %></span>
         <%= message.body %>
-        (<%= link_to "edit" , edit_message_path(message) %>)
+        (
+        <%= message.updated_at.in_time_zone('Asia/Tokyo') %>
+        )
+        (
+        <%= link_to "edit" , edit_message_path(message) %>
+        <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+        )
         <br>
       </div>
     <% end %>
